@@ -1,68 +1,46 @@
-# CodeIgniter 4 Application Starter
+# Smart Home Dashboard
 
-## What is CodeIgniter?
+Smart Home Dashboard adalah aplikasi web berbasis CodeIgniter 4 
+yang digunakan untuk memonitor dan mengontrol perangkat smart home. 
+Dashboard ini menampilkan data suhu, kelembapan, status kipas, 
+konsumsi energi, status pintu, dan alarm secara real-time.
 
-CodeIgniter is a PHP full-stack web framework that is light, fast, flexible and secure.
-More information can be found at the [official site](https://codeigniter.com).
+## Fitur Utama
 
-This repository holds a composer-installable app starter.
-It has been built from the
-[development repository](https://github.com/codeigniter4/CodeIgniter4).
+- Monitoring suhu dan kelembapan secara real-time
+- Menampilkan status perangkat (kipas, pintu, alarm)
+- Statistik konsumsi energi harian
+- API endpoint untuk integrasi data sensor
 
-More information about the plans for version 4 can be found in [CodeIgniter 4](https://forum.codeigniter.com/forumdisplay.php?fid=28) on the forums.
+## Tech Stack
 
-You can read the [user guide](https://codeigniter.com/user_guide/)
-corresponding to the latest version of the framework.
+- Backend: PHP (CodeIgniter 4)
+- Frontend: HTML, CSS, JavaScript
+- Database: (Sesuai yang digunakan, misal MySQL)
+- API: JSON REST API
 
-## Installation & updates
+## Struktur Direktori
+- app/ : Source code aplikasi (controller, model, view)
+- public/ : Public assets & entry point
+- tests/ : Unit test
+- writable/ : File yang bisa di-write CI4 (cache, logs, dsb)
+- smarthome_db.sql : File SQL untuk setup database
 
-`composer create-project codeigniter4/appstarter` then `composer update` whenever
-there is a new release of the framework.
-
-When updating, check the release notes to see if there are any changes you might need to apply
-to your `app` folder. The affected files can be copied or merged from
-`vendor/codeigniter4/framework/app`.
-
-## Setup
-
-Copy `env` to `.env` and tailor for your app, specifically the baseURL
-and any database settings.
-
-## Important Change with index.php
-
-`index.php` is no longer in the root of the project! It has been moved inside the *public* folder,
-for better security and separation of components.
-
-This means that you should configure your web server to "point" to your project's *public* folder, and
-not to the project root. A better practice would be to configure a virtual host to point there. A poor practice would be to point your web server to the project root and expect to enter *public/...*, as the rest of your logic and the
-framework are exposed.
-
-**Please** read the user guide for a better explanation of how CI4 works!
-
-## Repository Management
-
-We use GitHub issues, in our main repository, to track **BUGS** and to track approved **DEVELOPMENT** work packages.
-We use our [forum](http://forum.codeigniter.com) to provide SUPPORT and to discuss
-FEATURE REQUESTS.
-
-This repository is a "distribution" one, built by our release preparation script.
-Problems with it can be raised on our forum, or as issues in the main repository.
-
-## Server Requirements
-
-PHP version 8.1 or higher is required, with the following extensions installed:
-
-- [intl](http://php.net/manual/en/intl.requirements.php)
-- [mbstring](http://php.net/manual/en/mbstring.installation.php)
-
-> [!WARNING]
-> - The end of life date for PHP 7.4 was November 28, 2022.
-> - The end of life date for PHP 8.0 was November 26, 2023.
-> - If you are still using PHP 7.4 or 8.0, you should upgrade immediately.
-> - The end of life date for PHP 8.1 will be December 31, 2025.
-
-Additionally, make sure that the following extensions are enabled in your PHP:
-
-- json (enabled by default - don't turn it off)
-- [mysqlnd](http://php.net/manual/en/mysqlnd.install.php) if you plan to use MySQL
-- [libcurl](http://php.net/manual/en/curl.requirements.php) if you plan to use the HTTP\CURLRequest library
+## Contoh Penggunaan
+- Dashboard utama: http://localhost:8080/dashboard.php
+- Endpoint API contoh :
+GET http://localhost:8080/api/temperature
+- Maka responnya adalah seperti ini :
+  [
+   {
+        "id": "2",
+        "value": "25",
+        "heating": "17",
+        "fan_speed": "45",
+        "fan1_status": "OFF",
+        "fan2_status": "OFF",
+        "fan3_status": "ON",
+        "created_at": "2025-05-31 06:06:57",
+        "updated_at": "2025-06-05 14:08:52"
+    }
+  ]
